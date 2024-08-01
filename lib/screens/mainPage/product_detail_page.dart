@@ -87,7 +87,7 @@ class _ProductDetailState extends State<ProductDetail> {
     // Build Page
     return Scaffold(
       appBar: AppBar(
-        // title: Text("Chi tiết sản phẩm"),
+        title: Text("Chi tiết sản phẩm"),
       ),
       body: Container(
         color: Colors.white,

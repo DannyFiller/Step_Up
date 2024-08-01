@@ -2,9 +2,11 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:stepup/app.dart';
 import 'package:stepup/data/api/api.dart';
 import 'package:stepup/data/models/account_model.dart';
+import 'package:stepup/data/providers/account_vm.dart';
 import 'package:stepup/screens/signIn_Up/login.dart';
 
 import 'package:stepup/utilities/const.dart';
@@ -42,7 +44,8 @@ class _RegisterState extends State<RegisterScreen> {
               if (signIn?.emailVerified == true) {
                 logger.d('Đăng ký thành công và xác nhận email');
                 timer.cancel();
-
+                await Provider.of<AccountVMS>(context, listen: false)
+                    .setCurrentAcc(_emailController.text);
                 if (mounted) {
                   Navigator.push(
                     context,
